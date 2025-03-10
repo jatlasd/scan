@@ -10,7 +10,7 @@ const NotLoggedIn = () => {
         </h1>
         
         <p className="text-xl text-muted-foreground italic">
-          "Small victories in an ongoing war"
+          "Small victories in an ongoing war."
         </p>
 
         <div className="mt-12 bg-white/50 dark:bg-black/20 backdrop-blur-sm rounded-2xl p-8 border border-border/50 shadow-lg">
@@ -19,7 +19,7 @@ const NotLoggedIn = () => {
             Sign in to start documenting your path to wellness.
           </p>
           
-          <SignInButton mode="modal">
+          <SignInButton mode="modal" forceRedirectUrl="/dashboard">
             <button className="bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-lg font-medium transition-all duration-200 cursor-pointer">
               Begin Your Journey
             </button>
