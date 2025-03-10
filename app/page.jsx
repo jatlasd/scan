@@ -1,12 +1,17 @@
 import React from 'react'
+import { SignedIn, SignedOut } from '@clerk/nextjs'
+import NotLoggedIn from '@/components/NotLoggedIn'
 
 const Home = () => {
   return (
-    <div className="flex flex-col space-y-5">
-
-      <h1 className='text-6xl font-semibold text-primary'>Current Accent</h1>
-      <h1 className='text-6xl font-semibold text-[#9575cd]'>Original Accent</h1>
-    </div>
+    <>
+      <SignedIn>
+        <p>hi</p>
+      </SignedIn>
+      <SignedOut>
+        <NotLoggedIn/>
+      </SignedOut>
+    </>
   )
 }
 

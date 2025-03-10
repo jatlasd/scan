@@ -1,5 +1,6 @@
 import { Nunito } from "next/font/google";
 import "./globals.css";
+import { ClerkProvider } from "@clerk/nextjs";
 
 const nunito = Nunito({
   variable: "--font-outfit",
@@ -14,12 +15,12 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={nunito.variable}>
-      <body
-        className={`bg-background text-text h-screen antialiased`}
-      >
-        {children}
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en" className={nunito.variable}>
+        <body className={`bg-background text-text h-screen antialiased`}>
+          {children}
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
