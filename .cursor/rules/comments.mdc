@@ -1,0 +1,10 @@
+---
+description: no comments
+globs: 
+alwaysApply: false
+---
+
+# Your rule content
+Never include comments in code suggestions. Not even when explaining the code.
+- You can @ files here
+- You can use markdown but dont have to
