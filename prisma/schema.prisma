@@ -21,14 +21,17 @@ model User {
   createdAt   DateTime @default(now())
   phoneNumber String   @default("n/a")
   isVerified  Boolean  @default(false)
-  settings    UserSettings?
+  settings    UserSettings[] 
 }
 
 model UserSettings {
-  id              String  @id @default(uuid())
-  user            User    @relation(fields: [userId], references: [id])
-  userId          String  @unique
+  id                 String  @id @default(uuid())
+  userId             String  @unique
+  user               User    @relation(fields: [userId], references: [id])
   emailNotifications Boolean @default(true)
-  theme           String  @default("light")
-  language        String  @default("en")
+  theme              String  @default("light")
+  language           String  @default("en")
+  
+  // Scan Settings
+  defaultLookupMethod String @default("CAMERA")
 }

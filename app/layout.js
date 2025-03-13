@@ -17,6 +17,23 @@ export default function RootLayout({ children }) {
   return (
     <ClerkProvider>
       <html lang="en" className={nunito.variable}>
+        <head>
+        <script dangerouslySetInnerHTML={{
+          __html: `
+            var constraints = {audio: true, video: false};
+            navigator.mediaDevices.getUserMedia(constraints)
+              .then(function(stream) {
+                window.permissiongiven = 1;
+                stream.getTracks().forEach(track => track.stop());
+              })
+              .catch(function(err) {
+                console.error('Error requesting permissions:', err);
+              });
+          `
+        }} />
+        <script src="//cdn.jsdelivr.net/npm/eruda"></script>
+        <script>eruda.init();</script>
+        </head>
         <body className={`bg-background text-text h-screen antialiased`}>
           {children}
         </body>

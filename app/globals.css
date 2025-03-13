@@ -229,3 +229,7 @@
     font-family: var(--font-sans);
   }
 }
+
+.asd {
+  outline: 1px inset black;
+}

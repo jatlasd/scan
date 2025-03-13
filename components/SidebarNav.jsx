@@ -7,7 +7,7 @@ import { navlinks } from "@/lib/constants/navlinks";
 const SidebarNav = () => {
   const pathname = usePathname();
   return (
-    <aside className="bg-sidebar border-sidebar-border fixed inset-y-0 left-0 z-50 flex h-full w-64 flex-col border-r shadow-lg">
+    <aside className="bg-sidebar border-sidebar-border fixed flex h-full w-64 flex-col border-r shadow-lg">
       <div className="border-sidebar-border bg-sidebar-primary/5 flex h-16 items-center justify-center border-b">
         <span className="text-sidebar-foreground text-xl font-bold">
           Your Logo
