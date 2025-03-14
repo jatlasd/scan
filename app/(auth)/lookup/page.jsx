@@ -1,6 +1,10 @@
+import ScannerContainer from "@/components/scan/ScannerContainer";
+import { checkUser } from "@/lib/checkUser";
 import React from "react";
 
-const LookupPage = () => {
+
+const LookupPage = async () => {
+  const user = await checkUser()
   return (
     <div className="asd m-10 flex flex-col">
       <div>
@@ -10,7 +14,7 @@ const LookupPage = () => {
           allergen data
         </p>
       </div>
-      
+      <ScannerContainer user={user}/>
     </div>
   );
 };
