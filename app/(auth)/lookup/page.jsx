@@ -1,8 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardHeader,
@@ -10,7 +8,9 @@ import {
   CardDescription,
   CardContent,
 } from "@/components/ui/card";
-import { Camera, Search } from "lucide-react";
+import { determineRenders } from "@/lib/constants/dev";
+
+const renderEnvironment = "dev";
 
 const LookupPage = () => {
   const [user, setUser] = useState(null);
@@ -40,6 +40,8 @@ const LookupPage = () => {
     console.log("Searching for UPC:", upc);
   };
 
+  const components = determineRenders(renderEnvironment, { upc, setUpc, handleSearch });
+
   if (isLoading)
     return (
       <div className="flex h-full items-center justify-center">Loading...</div>
@@ -66,34 +68,11 @@ const LookupPage = () => {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <form onSubmit={handleSearch} className="mb-4 flex gap-2">
-              <Input
-                type="text"
-                placeholder="Enter UPC code (e.g., 049000042566)"
-                value={upc}
-                onChange={(e) => setUpc(e.target.value)}
-                className="flex-1"
-              />
-              <Button
-                type="submit"
-                className="flex items-center gap-2 not-[disabled]:cursor-pointer"
-                disabled={!upc}
-              >
-                <Search className="h-4 w-4" />
-                <span className="hidden sm:inline">Search</span>
-              </Button>
-              <Button
-                type="button"
-                variant="outline"
-                className="flex items-center gap-2"
-              >
-                <Camera size={18} />
-                Scan Barcode
-              </Button>
-            </form>
+            {components.scanner}
 
             <div className="text-muted-foreground text-sm">
               <p>
+                {}
                 Try these example UPCs: 049000042566 (Coca-Cola), 038000138416
                 (Lay's), 028400090858 (Jif Peanut Butter), 041196910759 (Whole
                 Wheat Bread)
