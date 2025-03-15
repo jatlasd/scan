@@ -3,8 +3,12 @@ description: no comments
 globs: 
 alwaysApply: false
 ---
+# NO COMMENTS IN CODE
 
-# Your rule content
-Never include comments in code suggestions. Not even when explaining the code.
-- You can @ files here
-- You can use markdown but dont have to
+When providing code suggestions:
+1. NEVER include any comments within the code itself
+2. NEVER use comment syntax (// or /* */ or #) in any code blocks
+3. NEVER add explanatory comments inline with code
+4. NEVER add TODOs or FIXMEs in comments
+
+This applies to all programming languages and all code suggestions without exception. 

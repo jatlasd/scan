@@ -17,6 +17,8 @@ const LookupPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [upc, setUpc] = useState("");
+  const [product, setProduct] = useState(null);
+  const [isScanning, setIsScanning] = useState(false);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -31,8 +33,26 @@ const LookupPage = () => {
         setIsLoading(false);
       }
     };
-    fetchUser();
   }, []);
+
+  // TODO add actual api route for lookup. currently using constants
+
+  useEffect(() => {
+    const fetchProductData = async (upc) => {
+      setIsLoading(true);
+      try {
+        const response = await fetch(`/api/product/${encodeURIComponent(upc)}`);
+        const data = await response.json();
+        setProduct(data);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+  }, [upc]);
+
+  const minLoadingTimer = new Promise((resolve) => setTimeout(resolve, 2000));
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -40,7 +60,12 @@ const LookupPage = () => {
     console.log("Searching for UPC:", upc);
   };
 
-  const components = determineRenders(renderEnvironment, { upc, setUpc, handleSearch });
+  const components = determineRenders(renderEnvironment, {
+    upc,
+    setUpc,
+    handleSearch,
+    setProduct,
+  });
 
   if (isLoading)
     return (
@@ -48,17 +73,16 @@ const LookupPage = () => {
     );
 
   return (
-    <div className="container max-w-5xl py-6">
-      <div className="ml-10 flex flex-col gap-6">
-        <div>
+      <div className="w-full pl-20 flex flex-col gap-6 container py-6">
+
+        <div className="flex flex-col">
           <h1 className="mb-2 text-3xl font-bold tracking-tight">
             Product Lookup
           </h1>
-          <p className="text-muted-foreground">
+          <p className="text-muted-foreground pb-6">
             Scan a barcode or enter a UPC to view detailed product information
             and allergen data
           </p>
-        </div>
 
         <Card className="w-full max-w-3xl bg-white">
           <CardHeader>
@@ -69,18 +93,11 @@ const LookupPage = () => {
           </CardHeader>
           <CardContent>
             {components.scanner}
-
-            <div className="text-muted-foreground text-sm">
-              <p>
-                {}
-                Try these example UPCs: 049000042566 (Coca-Cola), 038000138416
-                (Lay's), 028400090858 (Jif Peanut Butter), 041196910759 (Whole
-                Wheat Bread)
-              </p>
-            </div>
           </CardContent>
         </Card>
-      </div>
+        </div>
+
+      {product && <button onClick={() => console.log(product)}>click</button>}
     </div>
   );
 };

@@ -10,11 +10,21 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-export function ProductSelector({ setUpc }) {
+export function ProductSelector({ setUpc, setProduct }) {
   const handleProductSelect = (value) => {
     const selectedProduct = goProducts[value];
-    if (selectedProduct && selectedProduct.code) {
-      setUpc(selectedProduct.code);
+    if (selectedProduct) {
+      // Set UPC if available
+      if (selectedProduct.code) {
+        setUpc(selectedProduct.code);
+      } else {
+        setUpc("");
+      }
+      
+      // Set product data if the setProduct function is provided
+      if (setProduct) {
+        setProduct(selectedProduct);
+      }
     }
   };
 
@@ -30,7 +40,9 @@ export function ProductSelector({ setUpc }) {
         <SelectContent>
           {Object.entries(goProducts).map(([key, product]) => (
             <SelectItem key={key} value={key}>
-              {product.product.brand} - {product.product.name}
+              {product.product ? 
+                `${product.product.brand} - ${product.product.name}` : 
+                `Error - ${product.error || "Unknown error"}`}
             </SelectItem>
           ))}
         </SelectContent>
