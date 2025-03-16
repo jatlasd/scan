@@ -9,6 +9,7 @@ import {
   CardContent,
 } from "@/components/ui/card";
 import { determineRenders } from "@/lib/constants/dev";
+import ProductCard from "@/components/product/ProductCard";
 
 const renderEnvironment = "dev";
 
@@ -97,7 +98,9 @@ const LookupPage = () => {
         </Card>
         </div>
 
-      {product && <button onClick={() => console.log(product)}>click</button>}
+
+      {/* {product && <button onClick={()=>console.log(product)}>click</button>} */}
+      {product && <ProductCard p={product}/>}
     </div>
   );
 };
