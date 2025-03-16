@@ -14,14 +14,16 @@ datasource db {
 }
 
 model User {
-  id          String   @id @default(uuid())
+  id          String           @id @default(uuid())
   firstName   String
   lastName    String
   email       String
-  createdAt   DateTime @default(now())
-  phoneNumber String   @default("n/a")
-  isVerified  Boolean  @default(false)
-  settings    UserSettings[] 
+  createdAt   DateTime         @default(now())
+  phoneNumber String           @default("n/a")
+  isVerified  Boolean          @default(false)
+  settings    UserSettings[]
+  products    UserProduct[]
+  ingredients UserIngredient[]
 }
 
 model UserSettings {
@@ -31,24 +33,52 @@ model UserSettings {
   emailNotifications Boolean @default(true)
   theme              String  @default("light")
   language           String  @default("en")
-  
-  // Scan Settings
+
   defaultLookupMethod String @default("CAMERA")
+  // TODO add things like dietaryRestrictions
 }
 
 model GlobalProduct {
-  upc String @id @default(uuid())
-  name String
-  brand String
-  image String
-  ingredients GlobalIngredient[]
+  upc          String             @id @default(uuid())
+  source       String
+  type         String             @default("food")
+  name         String
+  brand        String
+  image        String
+  ingredients  GlobalIngredient[]
+  userProducts UserProduct[]
+}
 
+model UserProduct {
+  id              String           @id @default(uuid())
+  userId          String
+  user            User             @relation(fields: [userId], references: [id])
+  globalProductId String
+  globalProduct   GlobalProduct    @relation(fields: [globalProductId], references: [upc])
+  createdAt       DateTime         @default(now())
+  reaction        String?
+  ingredients     UserIngredient[] @relation("UserIngredientToUserProduct")
 }
 
 model GlobalIngredient {
-  name String @id @default(uuid())
-  globalProduct GlobalProduct @relation(fields: [globalProductId], references: [upc])
+  id String @id @default(uuid())
+  name            String           
   globalProductId String
-  quantity String
-  unit String
+  globalProduct   GlobalProduct    @relation(fields: [globalProductId], references: [upc])
+  quantity        String
+  unit            String
+  userIngredients UserIngredient[]
+}
+
+model UserIngredient {
+  id                 String           @id @default(uuid())
+  userId             String
+  user               User             @relation(fields: [userId], references: [id])
+  globalIngredientId String
+  globalIngredient   GlobalIngredient @relation(fields: [globalIngredientId], references: [id])
+  count              Int              @default(1)
+  warn               Boolean          @default(false)
+  avoid              Boolean          @default(false)
+  ignore             Boolean          @default(false)
+  products           UserProduct[]    @relation("UserIngredientToUserProduct")
 }
