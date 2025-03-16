@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/card";
 import { determineRenders } from "@/lib/constants/dev";
 import ProductCard from "@/components/product/ProductCard";
+import { formatGoUpcData } from "@/lib/formatApiData";
 
 const renderEnvironment = "dev";
 
@@ -100,7 +101,7 @@ const LookupPage = () => {
 
 
       {/* {product && <button onClick={()=>console.log(product)}>click</button>} */}
-      {product && <ProductCard p={product}/>}
+      {product && <ProductCard product={formatGoUpcData(product)}/>}
     </div>
   );
 };

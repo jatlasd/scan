@@ -35,3 +35,20 @@ model UserSettings {
   // Scan Settings
   defaultLookupMethod String @default("CAMERA")
 }
+
+model GlobalProduct {
+  upc String @id @default(uuid())
+  name String
+  brand String
+  image String
+  ingredients GlobalIngredient[]
+
+}
+
+model GlobalIngredient {
+  name String @id @default(uuid())
+  globalProduct GlobalProduct @relation(fields: [globalProductId], references: [upc])
+  globalProductId String
+  quantity String
+  unit String
+}
