@@ -45,7 +45,7 @@ model GlobalProduct {
   name         String
   brand        String
   image        String
-  ingredients  GlobalIngredient[]
+  ingredients String[]
   userProducts UserProduct[]
 }
 
@@ -60,22 +60,11 @@ model UserProduct {
   ingredients     UserIngredient[] @relation("UserIngredientToUserProduct")
 }
 
-model GlobalIngredient {
-  id String @id @default(uuid())
-  name            String           
-  globalProductId String
-  globalProduct   GlobalProduct    @relation(fields: [globalProductId], references: [upc])
-  quantity        String
-  unit            String
-  userIngredients UserIngredient[]
-}
-
 model UserIngredient {
   id                 String           @id @default(uuid())
   userId             String
   user               User             @relation(fields: [userId], references: [id])
-  globalIngredientId String
-  globalIngredient   GlobalIngredient @relation(fields: [globalIngredientId], references: [id])
+  name               String
   count              Int              @default(1)
   warn               Boolean          @default(false)
   avoid              Boolean          @default(false)
