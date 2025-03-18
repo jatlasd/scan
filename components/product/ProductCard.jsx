@@ -10,8 +10,8 @@ import { Separator } from "@/components/ui/separator";
 import { Info, ShoppingBag, Leaf, AlertTriangle } from "lucide-react";
 import Image from "next/image";
 import { Button } from "../ui/button";
-import { getOrCreateProduct } from "@/lib/actions/productActions";
-import { useState } from "react";
+import { getOrCreateProduct, isProductInDb } from "@/lib/actions/productActions";
+import { useState, useEffect } from "react";
 
 // Common allergens to highlight in ingredients list
 const commonAllergens = [
@@ -34,6 +34,15 @@ const commonAllergens = [
 const ProductCard = ({ product: initialProduct }) => {
   const [product, setProduct] = useState(initialProduct);
   const [isLoading, setIsLoading] = useState(false);
+  const [isStored, setIsStored] = useState(false)
+
+  useEffect(() => {
+    const checkIfProductExistsInDb = async () => {
+      const exists = await isProductInDb(product.upc)
+      setIsStored(exists)
+    }
+    checkIfProductExistsInDb()
+  }, [product.upc])
 
   const handleLogReaction = async () => {
     try {
@@ -80,7 +89,7 @@ const ProductCard = ({ product: initialProduct }) => {
           <div>
             <p className="text-xs text-purple-400">UPC: {product.upc}</p>
             <CardTitle className="text-2xl font-extrabold tracking-tight sm:text-3xl">
-              {product.name}
+              {isStored ? 'stored' : 'not'}
             </CardTitle>
             <CardDescription className="flex items-center gap-2 text-base">
               <span className="font-semibold text-slate-600">{product.brand}</span>
