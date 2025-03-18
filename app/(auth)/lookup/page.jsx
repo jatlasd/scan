@@ -75,33 +75,31 @@ const LookupPage = () => {
     );
 
   return (
-      <div className="w-full pl-20 flex flex-col gap-6 container py-6">
+    <div className="container flex w-full flex-col gap-6 py-6 pl-20">
+      <div className="flex flex-col">
+        <h1 className="mb-2 text-3xl font-bold tracking-tight">
+          Product Lookup
+        </h1>
+        <p className="text-muted-foreground pb-6">
+          Scan a barcode or enter a UPC to view detailed product information and
+          allergen data
+        </p>
 
-        <div className="flex flex-col">
-          <h1 className="mb-2 text-3xl font-bold tracking-tight">
-            Product Lookup
-          </h1>
-          <p className="text-muted-foreground pb-6">
-            Scan a barcode or enter a UPC to view detailed product information
-            and allergen data
-          </p>
-
-        <Card className="w-full max-w-3xl bg-white">
-          <CardHeader>
-            <CardTitle>Search Products</CardTitle>
-            <CardDescription>
-              Enter a UPC code or scan a barcode to find product information
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            {components.scanner}
-          </CardContent>
-        </Card>
-        </div>
-
+        {!product && (
+          <Card className="w-full max-w-3xl bg-white">
+            <CardHeader>
+              <CardTitle>Search Products</CardTitle>
+              <CardDescription>
+                Enter a UPC code or scan a barcode to find product information
+              </CardDescription>
+            </CardHeader>
+            <CardContent>{components.scanner}</CardContent>
+          </Card>
+        )}
+      </div>
 
       {/* {product && <button onClick={()=>console.log(product)}>click</button>} */}
-      {product && <ProductCard product={formatGoUpcData(product)}/>}
+      {product && <ProductCard product={formatGoUpcData(product)} />}
     </div>
   );
 };

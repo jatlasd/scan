@@ -39,13 +39,13 @@ model UserSettings {
 }
 
 model GlobalProduct {
-  upc          String             @id @default(uuid())
+  upc          String        @id @default(uuid())
   source       String
-  type         String             @default("food")
+  type         String        @default("food")
   name         String
   brand        String
   image        String
-  ingredients String[]
+  ingredients  String[]
   userProducts UserProduct[]
 }
 
@@ -61,13 +61,13 @@ model UserProduct {
 }
 
 model UserIngredient {
-  id                 String           @id @default(uuid())
-  userId             String
-  user               User             @relation(fields: [userId], references: [id])
-  name               String
-  count              Int              @default(1)
-  warn               Boolean          @default(false)
-  avoid              Boolean          @default(false)
-  ignore             Boolean          @default(false)
-  products           UserProduct[]    @relation("UserIngredientToUserProduct")
+  id       String        @id @default(uuid())
+  userId   String
+  user     User          @relation(fields: [userId], references: [id])
+  name     String
+  count    Int           @default(1)
+  warn     Boolean       @default(false)
+  avoid    Boolean       @default(false)
+  ignore   Boolean       @default(false)
+  products UserProduct[] @relation("UserIngredientToUserProduct")
 }
