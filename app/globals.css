@@ -74,6 +74,39 @@
   --color-accent-600: var(--accent-600);
   --color-accent-700: var(--accent-700);
   --color-accent-800: var(--accent-800);
+
+  --color-success: var(--success);
+  --color-success-50: var(--success-50);
+  --color-success-100: var(--success-100);
+  --color-success-200: var(--success-200);
+  --color-success-300: var(--success-300);
+  --color-success-400: var(--success-400);
+  --color-success-500: var(--success-500);
+  --color-success-600: var(--success-600);
+  --color-success-700: var(--success-700);
+  --color-success-800: var(--success-800);
+
+  --color-warning: var(--warning);
+  --color-warning-50: var(--warning-50);
+  --color-warning-100: var(--warning-100);
+  --color-warning-200: var(--warning-200);
+  --color-warning-300: var(--warning-300);
+  --color-warning-400: var(--warning-400);
+  --color-warning-500: var(--warning-500);
+  --color-warning-600: var(--warning-600);
+  --color-warning-700: var(--warning-700);
+  --color-warning-800: var(--warning-800);
+
+  --color-danger: var(--danger);
+  --color-danger-50: var(--danger-50);
+  --color-danger-100: var(--danger-100);
+  --color-danger-200: var(--danger-200);
+  --color-danger-300: var(--danger-300);
+  --color-danger-400: var(--danger-400);
+  --color-danger-500: var(--danger-500);
+  --color-danger-600: var(--danger-600);
+  --color-danger-700: var(--danger-700);
+  --color-danger-800: var(--danger-800);
 }
 
 :root {
@@ -123,6 +156,40 @@
   --accent-700: oklch(31.57% 0.0506 182.79);
   --accent-800: oklch(13.36% 0.0171 187.67);
   --accent-foreground: oklch(95.21% 0 0);
+
+  --sucess: oklch(61.96% 0.1196 162.31);
+  --success-50:oklch(90.52% 0.0543 169.75);
+  --success-100:oklch(88.28% 0.0657 169.08);
+  --success-200:oklch(83.99% 0.0913 166.97);
+  --success-300:oklch(79.96% 0.1141 165.5);
+  --success-400:oklch(76.21% 0.1333 163.5);
+  --success-500:oklch(71.06% 0.1387 162.17);
+  --success-600:oklch(61.96% 0.1196 162.31);
+  --success-700:oklch(48.87% 0.0917 163.17);
+  --success-800: oklch(35.13% 0.0633 162.74);
+
+  --warning: oklch(78.06% 0.1269 57.86);
+  --warning-50:oklch(96.48% 0.0186 62.46);
+  --warning-100:oklch(93.58% 0.0349 60.42);
+  --warning-200:oklch(88.22% 0.0655 60.8);
+  --warning-300:oklch(82.96% 0.0972 58.78);
+  --warning-400:oklch(78.06% 0.1269 57.86);
+  --warning-500:oklch(71.78% 0.1626 53.73);
+  --warning-600:oklch(63.64% 0.1632 50.24);
+  --warning-700:oklch(51.87% 0.13 51.29);
+  --warning-800:oklch(39.38% 0.0961 51.56);
+
+  --danger:oklch(61.22% 0.2082 22.24);
+  --danger-50:oklch(92.06% 0.0345 13.36);
+  --danger-100:oklch(87.97% 0.0523 13.79);
+  --danger-200:oklch(80.23% 0.0926 14.29);
+  --danger-300:oklch(72.72% 0.1349 15.82);
+  --danger-400:oklch(66.38% 0.1756 18.68);
+  --danger-500:oklch(61.22% 0.2082 22.24);
+  --danger-600:oklch(54.3% 0.2082 25.29);
+  --danger-700:oklch(44.34% 0.1673 24.74);
+  --danger-800:oklch(33.73% 0.1241 23.94);
+
   
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.577 0.245 27.325);

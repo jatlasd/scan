@@ -111,7 +111,7 @@ const ProductCard = ({ product: initialProduct }) => {
         <Button 
           onClick={handleLogReaction}
           disabled={isLoading}
-          className="bg-purple-600 hover:bg-purple-700 text-white font-semibold px-8 py-6 text-lg rounded-xl disabled:opacity-50 disabled:cursor-not-allowed"
+          className={`${!isStored ? 'bg-primary' : 'bg-danger'} hover:bg-primary-700 cursor-pointer text-white font-semibold px-8 py-6 text-lg rounded-xl disabled:opacity-50 disabled:cursor-not-allowed`}
         >
           {isLoading ? "Processing..." : "Log Reaction"}
         </Button>
