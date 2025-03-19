@@ -85,21 +85,29 @@ const LookupPage = () => {
           allergen data
         </p>
 
-        {!product && (
+        {product ? (
+          <button onClick={()=>setProduct(null)}>Scan Another Item</button>
+        ) : (
           <Card className="w-full max-w-3xl bg-white">
-            <CardHeader>
-              <CardTitle>Search Products</CardTitle>
-              <CardDescription>
-                Enter a UPC code or scan a barcode to find product information
-              </CardDescription>
-            </CardHeader>
-            <CardContent>{components.scanner}</CardContent>
-          </Card>
-        )}
+          <CardHeader>
+            <CardTitle>Search Products</CardTitle>
+            <CardDescription>
+              Enter a UPC code or scan a barcode to find product information
+            </CardDescription>
+          </CardHeader>
+          <CardContent>{components.scanner}</CardContent>
+        </Card>
+        )
+        }
       </div>
 
-      {/* {product && <button onClick={()=>console.log(product)}>click</button>} */}
       {product && <ProductCard product={formatGoUpcData(product)} />}
+      {/* {product && (
+        <div className="">
+          <button onClick={()=>console.log(product.product.ingredients.text)}>click</button>
+          <p>{product.product.ingredients.text}</p>
+        </div>
+      )} */}
     </div>
   );
 };

@@ -200,7 +200,7 @@ const ProductCard = ({ product: initialProduct }) => {
                   Warnings
                 </h3>
                 <p className="text-purple-600">
-                  Keep out of reach of children. For external use only.
+                  {product.allergenStatement || 'no warning'}
                 </p>
               </div>
             </div>
