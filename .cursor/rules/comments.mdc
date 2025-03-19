@@ -6,7 +6,7 @@ alwaysApply: true
 ---
 description: no comments
 globs: 
-alwaysApply: false
+alwaysApply: true
 ---
 # NO COMMENTS IN CODE
 

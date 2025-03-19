@@ -1,0 +1,19 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+---
+description: Rules for code best practice to keep it simple and not overcomplicate.
+globs: **/*.{ts,tsx,js,jsx}
+---
+- Write clean, minimal, and maintainable code.
+- Avoid excessive abstraction; keep functions and components straightforward.
+- Prefer readable and declarative code over complex optimizations.
+- Use simple conditionals and avoid nested ternaries.
+- Keep functions small and single-purpose; avoid unnecessary parameters.
+- Favor native language features over external dependencies when possible.
+- Avoid premature optimization; focus on clarity first.
+- Remove unused code and avoid unnecessary abstractions.
+- Use consistent patterns but avoid over-engineering solutions.
+- Keep component hierarchies shallow and props minimal.

@@ -39,14 +39,15 @@ model UserSettings {
 }
 
 model GlobalProduct {
-  upc          String        @id @default(uuid())
-  source       String
-  type         String        @default("food")
-  name         String
-  brand        String
-  image        String
-  ingredients  String[]
-  userProducts UserProduct[]
+  upc                String        @id @default(uuid())
+  source             String
+  type               String        @default("food")
+  name               String
+  brand              String
+  image              String
+  ingredients        String[]
+  allergentStatement String?
+  userProducts       UserProduct[]
 }
 
 model UserProduct {
