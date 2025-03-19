@@ -89,7 +89,7 @@ const ProductCard = ({ product: initialProduct }) => {
           <div>
             <p className="text-xs text-purple-400">UPC: {product.upc}</p>
             <CardTitle className="text-2xl font-extrabold tracking-tight sm:text-3xl">
-              {isStored ? 'stored' : 'not'}
+              {product.name}
             </CardTitle>
             <CardDescription className="flex items-center gap-2 text-base">
               <span className="font-semibold text-slate-600">{product.brand}</span>
@@ -107,14 +107,21 @@ const ProductCard = ({ product: initialProduct }) => {
       </CardHeader>
       <Separator className="bg-purple-100" />
 
-      <div className="px-6 py-4 flex justify-center w-full">
-        <Button 
+      <div className="px-6 flex justify-center w-full">
+        {isStored ? (
+          <div className="flex flex-col bg-danger text-white w-1/2 items-center rounded-xl py-2">
+            <h1 className="text-lg">Product Logged</h1>
+            <p>on this date! product.createdAt</p>
+          </div>
+        ) : (
+          <Button 
           onClick={handleLogReaction}
           disabled={isLoading}
-          className={`${!isStored ? 'bg-primary' : 'bg-danger'} hover:bg-primary-700 cursor-pointer text-white font-semibold px-8 py-6 text-lg rounded-xl disabled:opacity-50 disabled:cursor-not-allowed`}
+          className="bg-primary-500 hover:bg-primary-700 cursor-pointer text-white font-semibold px-8 py-6 text-lg rounded-xl disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {isLoading ? "Processing..." : "Log Reaction"}
         </Button>
+        )}
       </div>
 
       <CardContent className="pt-4">
