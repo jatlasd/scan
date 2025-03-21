@@ -55,7 +55,7 @@ model UserProduct {
   userId          String
   user            User             @relation(fields: [userId], references: [id])
   globalProductId String
-  globalProduct   GlobalProduct    @relation(fields: [globalProductId], references: [upc])
+  globalProduct   GlobalProduct    @relation(fields: [globalProductId], references: [upc], onDelete: Cascade)
   createdAt       DateTime         @default(now())
   reaction        String?
   ingredients     UserIngredient[] @relation("UserIngredientToUserProduct")

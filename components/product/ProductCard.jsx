@@ -68,6 +68,7 @@ const tooltipContent = (product) => (
   </div>
 );
 
+// !!! get rid of hard coded category badge
 const ProductCard = ({ product: initialProduct }) => {
   const [product, setProduct] = useState(initialProduct);
   const [isLoading, setIsLoading] = useState(false);
