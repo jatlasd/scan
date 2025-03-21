@@ -40,7 +40,7 @@ model UserSettings {
 
 model GlobalProduct {
   upc                String        @id @default(uuid())
-  source             String
+  source             Json
   type               String        @default("food")
   name               String
   brand              String
